@@ -29,7 +29,7 @@ class WsTransformStream extends Duplex {
         this._shouldTransform = typeof transform === 'function';
         this._waiting = false;
         this.transform = this._shouldTransform && transform.bind(this);
-
+        this._mask = mask;
         this.transport = new PassThrough();
         this.receiver = new FlushableReceiver(
             receiver.binaryType,
@@ -113,7 +113,7 @@ class WsTransformStream extends Duplex {
 
                 this.sender.send(output, {
                     binary: typeof output !== 'string',
-                    mask,
+                    mask: this._mask,
                     compress: this._shouldCompress,
                     fin: true
                 });
