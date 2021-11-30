@@ -91,14 +91,12 @@ class WsTransformStream extends Duplex {
         }
     }
 
-    async _final(cb) {
-        await this._onSourceEnd();
-        // cb();
+    _final(cb) {
+        this._onSourceEnd().then(() => {cb()});
     }
 
-    async _destroy(err, cb) {
-        await this._onSourceEnd();
-        cb(err);
+    _destroy(err, cb) {
+        this._onSourceEnd().then(() => {cb()});
     }
 
     _onDataAvailable() {
