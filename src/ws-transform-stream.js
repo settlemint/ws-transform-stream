@@ -112,7 +112,7 @@ class WsTransformStream extends Duplex {
 
                 this.sender.send(output, {
                     binary: typeof output !== 'string',
-                    mask: false,
+                    mask: true,
                     compress: this._shouldCompress,
                     fin: true
                 });
