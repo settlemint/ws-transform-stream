@@ -19,7 +19,8 @@ class WsTransformStream extends Duplex {
             transformSequential = true,
             sender = {},
             receiver = {},
-            compress
+            compress,
+            mask = false
         } = options;
 
         super();
@@ -112,7 +113,7 @@ class WsTransformStream extends Duplex {
 
                 this.sender.send(output, {
                     binary: typeof output !== 'string',
-                    mask: true,
+                    mask,
                     compress: this._shouldCompress,
                     fin: true
                 });
