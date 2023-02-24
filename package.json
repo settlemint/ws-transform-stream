@@ -1,6 +1,6 @@
 {
   "name": "@settlemint/ws-transform-stream",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Node.JS websocket Transform stream implementation",
   "main": "src/index.js",
   "scripts": {
